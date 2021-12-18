@@ -32,7 +32,8 @@
     <div style="width: 100%">
       <div class="popup-info" id="popup">
         <div class="popup-close" id="close" onClick="popupClose()">X</div>
-        <form method="post" action="/add_point" class="popup-form">
+        <form class="popup-form" onsubmit="submitData(event)"/>
+          {%csrf_token%}
           <input type="text" name="phone" placeholder="ტელეფონი" /><br />
           <input type="text" name="name" placeholder="სახელი გვარი" /><br />
           <input type="text" name="comment" placeholder="კომენტარი" /><br />
