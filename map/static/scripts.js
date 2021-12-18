@@ -64,7 +64,7 @@ window.onload = (e) => {
           color: 'blue',
           fillColor: '#5400ff',
           fillOpacity: 0.5,
-          radius: 50
+          radius: 300
       }).addTo(map);
       circle.bindPopup(`${elem.name}<br>${elem.phone}<br>${elem.comment}`);
       
