@@ -31,7 +31,7 @@
     </header>
     <div style="width: 100%">
       <div class="popup-info" id="popup">
-        <div class="popup-close" id="close">X</div>
+        <div class="popup-close" id="close" onClick="popupClose()">X</div>
         <form method="post" action="/add_point" class="popup-form">
           <input type="text" name="phone" placeholder="ტელეფონი" /><br />
           <input type="text" name="name" placeholder="სახელი გვარი" /><br />
@@ -57,11 +57,11 @@
       });
     </script>
     <script>
-      var close_popup = document.getElementById("close");
-      var popup = document.getElementsByClassName("popup-info")[0];
-      close_popup.onClick = function (e) {
-        popup.style.display = "none";
-        console.log("rame");
+      function popupClose (){
+        var close_popup = document.getElementById("close");
+        var popup = document.getElementById("popup");
+
+        popup.style.display = 'none';
       };
     </script>
   </body>
