@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <header class="header-cont">
+      <div class="header">
+        <a href="#" class="logo">Logo</a>
+        <ul class="signupin">
+          <li>Log In</li>
+          <li>Register</li>
+        </ul>
+      </div>
+    </header>
+    <div style="width: 100%">
+      <div class="popup-info" id="popup">
+        <div class="popup-close" id="close">X</div>
+        <form method="post" action="/add_point" class="popup-form">
+          <input type="text" name="phone" placeholder="ტელეფონი" /><br />
+          <input type="text" name="name" placeholder="სახელი გვარი" /><br />
+          <input type="text" name="comment" placeholder="კომენტარი" /><br />
+          <input type="submit" value="save" />
+        </form>
+      </div>
+    </div>
+    <div id="map"></div>
+    <script type="text/javascript" src="{% static 'scripts.js' %}"></script>
+    <script type="text/javascript">
+      var map = L.map("map").setView([41.719562, 44.788718], 8);
+      L.tileLayer(
+        "https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=23gNtsMw6Lr7QuwmLLh6",
+        {
+          atributtion:
+            '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        }
+      ).addTo(map);
+
+      map.on("click", function (event) {
+        handleClick(event.latlng);
+      });
+    </script>
+    <script>
+      var close_popup = document.getElementById("close");
+      var popup = document.getElementsByClassName("popup-info")[0];
+      close_popup.onClick = function (e) {
+        popup.style.display = "none";
+        console.log("rame");
+      };
+    </script>
+  </body>
+</html>
