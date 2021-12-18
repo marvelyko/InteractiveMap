@@ -60,7 +60,7 @@ window.onload = (e) => {
           fillOpacity: 0.5,
           radius: 50
       }).addTo(map);
-      circle.bindPopup(`${elem.name}<br>${elem.phone}<br>${elem.comment}`).openPopup();
+      circle.bindPopup(`${elem.name}<br>${elem.phone}<br>${elem.comment}`);
       L.control.scale({
                   metric: true,
                   imperial: false,
