@@ -10,6 +10,12 @@ L.tileLayer(
   }
 ).addTo(map);
 
+L.control.scale({
+  metric: true,
+  imperial: false,
+  position: 'topright'
+}).addTo(map);
+
 map.on("click", function (event) {
   handleClick(event.latlng);
 });
@@ -61,11 +67,7 @@ window.onload = (e) => {
           radius: 50
       }).addTo(map);
       circle.bindPopup(`${elem.name}<br>${elem.phone}<br>${elem.comment}`);
-      L.control.scale({
-                  metric: true,
-                  imperial: false,
-                  position: 'topright'
-              }).addTo(map);
+      
     }
   })
 }
