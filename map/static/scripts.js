@@ -21,8 +21,6 @@ function handleClick(cord) {
 
   lat = cord.lat;
   lng = cord.lng;
-
-  console.log(lat, lng);
 }
 
 function popupClose() {
@@ -30,4 +28,44 @@ function popupClose() {
   var popup = document.getElementById("popup");
 
   popup.style.display = "none";
+}
+
+function submitData(e){
+  e.preventDefault();
+  var phone = e.target.elements.phone.value;
+  var name = e.target.elements.name.value;
+  var comment = e.target.elements.comment.value;
+  var csrfmiddlewaretoken = e.target.elements.csrfmiddlewaretoken.value;
+  fetch("/add_point", {
+    method: 'post',
+    headers:{ 
+      'Content-Type': 'application/json',
+      "X-CSRFToken": csrfmiddlewaretoken },
+    body: JSON.stringify({
+      "phone":phone,
+      "name":name,
+      "comment":comment,
+      "latitude":lat,
+      "longtitude" : lng
+    })
+  }).then(window.location.reload());
+}
+
+window.onload = (e) => {
+  fetch("/get_points").then(e => e.json()).then(data=>{
+    for(var elem of data){
+      var circle = L.circle([elem.latitude, elem.longtitude], {
+          color: 'blue',
+          fillColor: '#5400ff',
+          fillOpacity: 0.5,
+          radius: 50
+      }).addTo(map);
+      circle.bindPopup(`${elem.name}<br>${elem.phone}<br>${elem.comment}`).openPopup();
+      L.control.scale({
+                  metric: true,
+                  imperial: false,
+                  position: 'topright'
+              }).addTo(map);
+    }
+  })
 }
