@@ -9,17 +9,40 @@
   width: 100%;
   z-index: 100;
 }
+.logo img{
+  height: 30px;
+}
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  align-items: center;
+  padding: 4px 20px;
 }
 .signupin {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.signupin li {
+.regist {
   margin-left: 10px;
+  padding: 5px 10px;
+  border: 1px solid #3E5FFF;
+  border-radius: 10px;
+  background: #3E5FFF;
+  color: #fff;
+}
+.auth{
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: 1px solid #3E5FFF;
+  border-radius: 10px;
+  background: #fff;
+  color: #3E5FFF;
+}
+.signupin li:hover{
+  background: #7289FF;
+  border: none;
+  color: #FFF;
 }
 .popup-info {
   position: absolute;

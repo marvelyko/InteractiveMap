@@ -16,5 +16,9 @@ def add_point(request):
     return redirect("/")
 
 def get_points(request):
-    points = Point.objects.all().values("name","phone","comment","latitude","longtitude")
+    points = Point.objects.all()
+    if points is not None:
+        points = points.values("name","phone","comment","latitude","longtitude")
+    else:
+        points = []
     return JsonResponse(list(points),safe=False)

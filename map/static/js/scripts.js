@@ -2,13 +2,10 @@ var lat = 0;
 var lng = 0;
 
 var map = L.map("map").setView([41.719562, 44.788718], 8);
-L.tileLayer(
-  "https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=23gNtsMw6Lr7QuwmLLh6",
-  {
-    atributtion:
-      '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-  }
-).addTo(map);
+L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(map);
 
 L.control.scale({
   metric: true,
@@ -67,7 +64,7 @@ window.onload = (e) => {
           radius: 50
       }).addTo(map);
       circle.bindPopup(`${elem.name}<br>${elem.phone}<br>${elem.comment}`);
-      
+
     }
   })
 }

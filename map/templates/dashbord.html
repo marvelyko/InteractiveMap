@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'dashbord.css' %}" />
+</head>
+<body>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'addLocations')" id="defaultOpen">ლოკაციის დამატება</button>
+  <button class="tablinks" onclick="openCity(event, 'myLocations')" >ჩემი ლოკაციები</button>
+  <button class="tablinks" onclick="openCity(event, 'myProfile')">პროფილი</button>
+</div>
+
+<div id="addLocations" class="tabcontent">
+  <div id="map"></div>
+</div>
+
+<div id="myLocations" class="tabcontent">
+  <table>
+  <tr>
+    <th>სახელი</th>
+    <th>ტელეფონი</th>
+    <th>კომენტარი</th>
+    <th>რედაქტირება</th>
+    <th>წაშლა</th>
+  </tr>
+  <tr>
+    <td>კარლო თევზაძე</td>
+    <td>597118175</td>
+    <td>გავაქირავებ 50$</td>
+    <td><button class="redact">რედაქტირება</button></td>
+    <td><button class="remove">წაშლა</button></td>
+  </tr>
+  <tr>
+    <td>თენგო პატარაია</td>
+    <td>559944788</td>
+    <td>გავაქირავებ 50$</td>
+    <td><button class="redact">რედაქტირება</button></td>
+    <td><button class="remove">წაშლა</button></td>
+  </tr>
+</table>
+</div>
+
+<div id="myProfile" class="tabcontent">
+  <form class="profilechange">
+    <input type="text" name="name" placeholder="Name surname"><br>
+    <input type="text" name="tel" placeholder="597118175"><br>
+    <input type="password" name="newpassword" placeholder="ახალი პაროლი"><br>
+    <input type="password" name="renewpassword" placeholder="გაიმეორეთ პაროლი"><br>
+    <button type="submit" class="submitHandler">ცვლილების შენახვა</button>
+  </form>
+</div>
+
+<script type="text/javascript" src="{% static 'verticaltab.js' %}"></script>
+
+<script type="text/javascript">
+    var map = L.map('map').setView([0,0], 8);
+
+    L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=23gNtsMw6Lr7QuwmLLh6', {
+      atributtion: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+    }).addTo(map);
+    var hirehouse = L.icon ({
+      iconUrl: 'https://www.clipartmax.com/png/middle/148-1484883_icon-house-orange-stock-vector-colourbox-house-icon.png',
+      iconSize: [50,50],
+      iconAnchor: [22,84],
+      popupAnchor: [12,-95]
+    })
+  </script>
+</body>
+</html> 

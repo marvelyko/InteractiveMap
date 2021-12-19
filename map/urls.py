@@ -4,5 +4,5 @@ from django.urls import path
 urlpatterns = [
     path('',index),
     path('add_point',add_point),
-    path('get_points',get_points)
+    path('get_points',get_points),
 ]

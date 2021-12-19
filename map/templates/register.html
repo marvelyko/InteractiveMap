@@ -7,7 +7,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}" />    
   </head>
   <body>
     <header class="header-cont">
@@ -20,12 +20,14 @@
       </div>
     </header>
 		<div class="login">
-			<h2>ავტორიზაცია</h2>
+			<h2>რეგისტრაცია</h2>
 			<form>
 				<input type="text" name="name" placeholder="მომხმარებელი"><br>
+				<input type="text" name="fullname" placeholder="სახელი გვარი"><br>
+				<input type="text" name="email" placeholder="იმეილი"><br>
 				<input type="password" name="password" placeholder="პაროლი"><br>
-				<a href="resetPassword.html" class="resetpassword">პაროლის აღდგენა</a>
-				<button type="submit" id="submit">შესვლა</button>
+				<input type="password" name="repassword" placeholder="გაიმეორეთ პაროლი"><br>
+				<input type="submit" name="submit" value="რეგისტრაცია" id="submit">
 			</form>
 		</div>
 </body>
